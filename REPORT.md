@@ -43,20 +43,40 @@ Here there is a simplified U-Net drawing that I made to make the distinction bet
 
 ## Diffusion Models
 
-Diffusion models, also known as Denoising Diffusion Probabilistic Models (DDPMs), are a class of generative models that convert noise from a simple distribution to a data sample. They gradually denoise data starting from pure noise.
+Diffusion models, also known as Denoising Diffusion Probabilistic Models (DDPMs), are a class of generative models that gradually denoise data starting from pure noise. They transform noise from a simple distribution into a data sample.
 
-### Mathematical Aspects
+The initial paper on Diffusion Models is “Deep Unsupervised Learning using Nonequilibrium Thermodynamics” written by Sohl-Dickstein et al. in 2015. As described by Ho et al. (2020), a diffusion model is a parametrized Markov chain trained using variational inference to produce samples matching the data after finite time. The main idea of diffusion models is to add noise little by little to the data until it reaches a well-behaved distribution such as a Gaussian distribution for example, and then to use a neural network to learn the reverse process. The first part of adding noise is called forward diffusion process (q), the second phase is the backward diffusion process (p).
 
-The core idea behind diffusion models is to reverse the process of adding Gaussian noise to data. This is done by defining a reverse diffusion process that starts from a simple prior (like Gaussian noise) and follows a Markov chain to generate samples.
+### Forward Diffusion Process
 
-The reverse process is defined by a stochastic differential equation (SDE), which is discretized into a finite number of steps for practical implementation. The denoising function used in each step is typically parameterized by a deep neural network.
+First, let us dive into the forward diffusion process, using the notation of the initial by paper by Sohl-Dickstein et al. (2015). The objective is to transform the data distribution $ q(x^{(0)}) $ into a well-behaved distribution $ \pi(y)$ by repeatedly applying a Markov diffusion kernel $T_\pi (y|y'; \beta)$ for $\pi(y)$ where $\beta $ is the diffusion rate. So, because we are in a Markov process, $x^{(t)}$ depends only on the previous time-step $x^{(t-1)}$. 
+
+The forward trajectory, corresponding to starting at the data distribution and performing T steps of diffusion, is thus:
+
+$$ q(x^{(0...T)}) = q(x^{(0)}) 	\prod\limits_{t=1}^T q(x^{(t)} | x^{(t-1)}) $$  
+
+We need to be careful when choosing the value of the diffusion rate $\beta $, we can predefine it by giving it some value, or we can learn it with gradient descent. It is important to choose an adequate $\beta $ because it will influence the distribution we find at the end, and we want this distribution to be well-behaved. Let us remark that in general, all papers on diffusion models use the Gaussian distribution as the well-behaved distribution $\pi(y)$.
+
+### Backward Diffusion Process
+
+Now, let us have a look at the backward diffusion process. Here, we start from the well-behaved distribution $p(x^{(T)}) (= \pi(x^{(T)}))$ and we try to reach the original data. Thus, the equation of the backward diffusion process of the previous forward trajectory is:
+
+$$ p(x^{(0...T)}) = p(x^{(T)}) 	\prod\limits_{t=1}^T p(x^{(t-1)} | x^{(t)}) $$
+
+This is also a Markov process and, because we are doing the reverse trajectory, $x^{(t-1)}$ depends only on the previous time-step $x^{(t)}$.
+
+However, the distribution p is unknown. We can assume that it is a Gaussian distribution, but we do not know its mean and covariance. Thus, we will need to estimate them during the training process using gradient descent.
+
+Here is an illustration that I adapted of how diffusion models work from the paper by Ho et al. (2020):
+
+![./Images_Rapport/Diffusion_Process.jpg](./Images_Rapport/Diffusion_Process.jpg)
 
 ### Practical Aspects in Image Generation
 
-In the context of image generation, diffusion models have shown impressive results. They can generate high-quality images by starting from random noise and gradually transforming it to resemble the target distribution.
+In the context of image generation, diffusion models have shown impressive results. They can generate high-quality images by starting from random noise and gradually transforming it to look like the target distribution. This allows the model to learn complex patterns in the data and generate realistic images.
 
 One of the key advantages of diffusion models is their ability to generate diverse samples, as the generation process is stochastic. However, one of the main challenges with diffusion models is the computational cost, as the generation process involves many steps and each step requires a forward pass of the neural network.
 
 ## Conclusion
 
-Both U-Net architectures and diffusion models have found wide applications in image processing tasks. U-Net's ability to capture context and localize while maintaining resolution makes it ideal for tasks like semantic segmentation. On the other hand, the ability of diffusion models to generate diverse, high-quality samples makes them a powerful tool for generative modeling.
+Both U-Net architectures and diffusion models have a variety of applications in image processing tasks. U-Net's ability to capture context and localize while maintaining resolution makes it ideal for tasks like semantic segmentation. On the other hand, the ability of diffusion models to generate diverse, high-quality samples makes them a powerful tool for generative modeling.
