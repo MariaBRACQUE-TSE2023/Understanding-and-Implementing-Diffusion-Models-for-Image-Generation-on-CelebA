@@ -14,6 +14,7 @@ This project explores diffusion models, a class of generative models, and their 
 ## Resources and References
 - [U-Net Paper](https://arxiv.org/abs/1505.04597)
 - [Tutorial on Diffusion Model](https://github.com/d9w/gen_models/blob/main/Score_Based_Generative_Modeling.ipynb)
+- [Another Tutorial on Diffusion Model](https://tree.rocks/make-diffusion-model-from-scratch-easy-way-to-implement-quick-diffusion-model-e60d18fd0f2e)
 - [Score-Based Generative Modeling through Stochastic Differential Equations](https://arxiv.org/abs/2011.13456)
 - [Denoising Diffusion Probabilistic Models](https://arxiv.org/abs/2006.11239)
 - Blog posts on diffusion models: [Post 1](https://yang-song.net/blog/2021/score/), [Post 2](https://lilianweng.github.io/posts/2021-07-11-diffusion-models/)
