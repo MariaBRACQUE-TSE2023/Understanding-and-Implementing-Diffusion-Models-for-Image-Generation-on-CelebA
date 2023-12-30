@@ -6,15 +6,13 @@ This is a brief report that provides an in-depth explanation of U-Net architectu
 
 U-Net is a type of convolutional neural network (CNN) that was developed for biomedical image segmentation and introduced by Ronnerberger et al. (2015). It is particularly useful for image segmentations, hip resolution, and diffusion models. It's called U-net because of the U-shape shape of its architecture. The architecture of U-Net is symmetric and consists of two paths: a contracting path (encoder) and an expansive path (decoder). In the original paper, the architecture is presented as follows:
 
-![./Images_Rapport/U-Net_paper.png](attachment:U-Net_paper.png)
-
-
+![./Images_Rapport/U-Net_paper.png](./Images_Rapport/U-Net_paper.png)
 
 ### Contracting Path
 
-The contracting path follows the typical architecture of a convolutional network. It consists of repeated application of two 3x3 convolutions (unpadded), each followed by a rectified linear unit (ReLU) and a 2x2 max pooling operation with stride 2 for downsampling. At each downsampling step, the number of feature channels is doubled.
+The contracting path, also known as encoder, is the "descending" part of the architechture. During this phase, the model extracts information about what is present in the image, to the detriment of spatial and contextual information. It follows the typical architecture of a convolutional network. It consists of repeated application of two 3x3 convolutions (unpadded), each followed by a rectified linear unit (ReLU) and a 2x2 max pooling operation with stride 2 for downsampling. At each downsampling step, the number of feature channels is doubled.
 
-Mathematically, the operation at each layer \(i\) in the contracting path can be represented as:
+Mathematically, the operation at each layer $i$ in the contracting path can be represented as:
 
 $$ H_i = \text{ReLU}(\text{Conv}(H_{i-1})) $$
 
@@ -23,9 +21,25 @@ where $H_i$ is the feature map at layer $i$, and $\text{Conv}$ denotes the convo
 
 ### Expansive Path
 
-Every step in the expansive path consists of an upsampling of the feature map followed by a 2x2 convolution ("up-convolution"), a concatenation with the correspondingly feature map from the contracting path, and two 3x3 convolutions, each followed by a ReLU.
+The expansive path, also known as decode, is the "ascending" part after the contraction point of the model. The objective is to reconstruct the input using the information extracted during the contracting path. Every step in the expansive path consists of an upsampling of the feature map followed by a 2x2 convolution ("up-convolution"), a concatenation with the correspondingly feature map from the contracting path, and two 3x3 convolutions, each followed by a ReLU.
 
-The cropping is necessary due to the loss of border pixels in every convolution. In the original paper, the authors describe a network with 23 convolutional layers.
+Mathematically, The operation at each layer $i$ in the expansive path can be represented as:
+
+$$ H_i = \text{ReLU}(\text{Conv}(\text{Concatenate}(H_{i-1}, H'_{i-1}))) $$
+
+where $H'_{i-1}$ is the corresponding feature map from the contracting path.
+
+### Other Elements
+
+Besides the encoder and decoder, thera are two other elements that are important in the U-net architecture: the bottlenet and the connecting paths.
+
+The Connecting paths take a copy of the features from the symmetrical part of the encoder and concatenate them onto their opposing stage in the decoder.
+
+The bottleneck is where the encoder switches into the decoder. First, we downsample the features with a 2x2 max pooling operation. Then we pass them through the repeated 3x3 convolutional layers followed by a ReLU activation function and we double the channels. Finally, we upsample them again to their previous resolution.
+
+Here there is a simplified U-Net drawing that I made to make the distinction between this four element clearer:
+
+![./Images_Rapport/U-Net-parts.png](./Images_Rapport/U-Net-parts.png)
 
 ## Diffusion Models
 
