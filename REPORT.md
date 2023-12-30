@@ -4,11 +4,22 @@ This is a brief report that provides an in-depth explanation of U-Net architectu
 
 ## U-Net Architectures
 
-U-Net is a type of convolutional neural network (CNN) that was developed for biomedical image segmentation. The architecture of U-Net is symmetric and consists of two paths: a contracting path (encoder) and an expansive path (decoder).
+U-Net is a type of convolutional neural network (CNN) that was developed for biomedical image segmentation and introduced by Ronnerberger et al. (2015). It is particularly useful for image segmentations, hip resolution, and diffusion models. It's called U-net because of the U-shape shape of its architecture. The architecture of U-Net is symmetric and consists of two paths: a contracting path (encoder) and an expansive path (decoder). In the original paper, the architecture is presented as follows:
+
+![Alt text](./Images_Rapport/U-Net paper.png)
+
+
 
 ### Contracting Path
 
 The contracting path follows the typical architecture of a convolutional network. It consists of repeated application of two 3x3 convolutions (unpadded), each followed by a rectified linear unit (ReLU) and a 2x2 max pooling operation with stride 2 for downsampling. At each downsampling step, the number of feature channels is doubled.
+
+Mathematically, the operation at each layer \(i\) in the contracting path can be represented as:
+
+$$ H_i = \text{ReLU}(\text{Conv}(H_{i-1})) $$
+
+where $H_i$ is the feature map at layer $i$, and $\text{Conv}$ denotes the convolution operation.
+
 
 ### Expansive Path
 
