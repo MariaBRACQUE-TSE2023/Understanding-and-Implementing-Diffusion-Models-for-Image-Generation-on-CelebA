@@ -1,4 +1,4 @@
-This is a brief report that provides an in-depth explanation of U-Net architectures and diffusion models, including their mathematical and practical aspects in image generation.
+This is a brief report that provides an in-depth explanation of U-Net architectures and diffusion models, including their basic mathematical and practical aspects in image generation.
 
 # U-Net Architectures and Diffusion Models
 
