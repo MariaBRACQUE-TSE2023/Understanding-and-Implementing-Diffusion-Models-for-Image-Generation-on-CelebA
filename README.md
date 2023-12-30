@@ -55,6 +55,11 @@ A detailed report on U-Net architectures and diffusion models, including mbasic 
 
 The diffusion model, while not achieving optimal performance due to resource constraints, demonstrates the capability to generate facial images. The generated images exhibit noise but show potential for improvement with further training and resource allocation. Challenges encountered include limited resources impacting model complexity and training duration.
 
+Here are the final generated images:
+
+![./Images_Rapport/Diffusion_Process.jpg](./Generated_Faces.png)
+
+
 ## Expected Deliverables
 1. Codebase with U-Net and Diffusion Model implementation.
 2. Generated images from CelebA dataset.
