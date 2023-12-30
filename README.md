@@ -17,6 +17,7 @@ This project explores diffusion models, a class of generative models, and their 
 - [Score-Based Generative Modeling through Stochastic Differential Equations](https://arxiv.org/abs/2011.13456)
 - [Denoising Diffusion Probabilistic Models](https://arxiv.org/abs/2006.11239)
 - Blog posts on diffusion models: [Post 1](https://yang-song.net/blog/2021/score/), [Post 2](https://lilianweng.github.io/posts/2021-07-11-diffusion-models/)
+- CelebA dataset: Deep Learning Face Attributes in the Wild by Ziwei Liu, Ping Luo, Xiaogang Wang, and Xiaoou Tang [Dataset]([https://yang-song.net/blog/2021/score/](https://mmlab.ie.cuhk.edu.hk/projects/CelebA.html))
 
 ## 1. Understanding U-Net and Diffusion Models
 
