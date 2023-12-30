@@ -41,7 +41,7 @@ A diffusion model is implemented with forward diffusion steps, where noise is ad
 
 ## 4. Generating Images with Diffusion Models
 
-The implemented diffusion model is applied to generate images from CelebA. Generated images are evaluated for quality and fidelity.
+The implemented diffusion model is applied to generate images from CelebA.
 
 ## 5. Documentation
 
