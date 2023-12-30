@@ -6,7 +6,7 @@ This is a brief report that provides an in-depth explanation of U-Net architectu
 
 U-Net is a type of convolutional neural network (CNN) that was developed for biomedical image segmentation and introduced by Ronnerberger et al. (2015). It is particularly useful for image segmentations, hip resolution, and diffusion models. It's called U-net because of the U-shape shape of its architecture. The architecture of U-Net is symmetric and consists of two paths: a contracting path (encoder) and an expansive path (decoder). In the original paper, the architecture is presented as follows:
 
-![Alt text](./Images_Rapport/U-Net paper.png)
+![./Images_Rapport/U-Net_paper.png](attachment:U-Net_paper.png)
 
 
 
