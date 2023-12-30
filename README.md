@@ -49,7 +49,7 @@ The implemented diffusion model is applied to generate images from CelebA.
 This document provides an overview of the project, outlines objectives, details dataset preparation, diffusion model implementation, and image generation. References and resources are included.
 
 ### REPORT.md
-A detailed report on U-Net architectures and diffusion models, including mathematical and practical aspects in image generation.
+A detailed report on U-Net architectures and diffusion models, including mbasic athematical and practical aspects in image generation.
 
 ## 6. Analysis and Results
 
