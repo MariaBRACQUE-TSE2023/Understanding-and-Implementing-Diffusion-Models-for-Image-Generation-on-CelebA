@@ -1,5 +1,5 @@
 # Understanding and Implementing Diffusion Models for Image Generation on CelebA
-This is a project done for the class Mathematics for ML and DL. It is about understanding and implementing diffusion models for image generation on CelebA.
+This is a project done for the class Mathematics for ML and DL for my second year of master on Data Science for Scocial Sciences at the Toulouse School of Economics.
 
 ## Overview
 This project explores diffusion models, a class of generative models, and their application in image generation, specifically using the CelebA dataset. The primary focus is on understanding U-Net architectures and their role in diffusion models.
