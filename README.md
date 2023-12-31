@@ -63,6 +63,8 @@ The diffusion model, while not achieving optimal performance due to resource con
 
 Here are the final generated images:
 
+![./Images_Rapport/Diffusion_Process.jpg](./Generated_Faces_1.png)
+![./Images_Rapport/Diffusion_Process.jpg](./Generated_Faces_2.png)
 ![./Images_Rapport/Diffusion_Process.jpg](./Generated_Faces.png)
 
 
