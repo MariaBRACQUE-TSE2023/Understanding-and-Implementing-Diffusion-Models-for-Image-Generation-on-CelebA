@@ -4,6 +4,8 @@ This is a project done for the class Mathematics for ML and DL for my second yea
 ## Overview
 This project explores diffusion models, a class of generative models, and their application in image generation, specifically using the CelebA dataset. The primary focus is on understanding U-Net architectures and their role in diffusion models.
 
+![./Images_Rapport/Decoder_results.png](./Images_Rapport/Decoder_results.png)
+
 ## Objectives
 1.  Understanding U-Net and Diffusion Models
 2.  Dataset Preparation
