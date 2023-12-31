@@ -49,13 +49,13 @@ The initial paper on Diffusion Models is “Deep Unsupervised Learning using Non
 
 ### Forward Diffusion Process
 
-First, let us dive into the forward diffusion process, using the notation of the initial by paper by Sohl-Dickstein et al. (2015). The objective is to transform the data distribution $ q(x^{(0)}) $ into a well-behaved distribution $ \pi(y)$ by repeatedly applying a Markov diffusion kernel $T_\pi (y|y'; \beta)$ for $\pi(y)$ where $\beta $ is the diffusion rate. So, because we are in a Markov process, $x^{(t)}$ depends only on the previous time-step $x^{(t-1)}$. 
+First, let us dive into the forward diffusion process, using the notation of the initial by paper by Sohl-Dickstein et al. (2015). The objective is to transform the data distribution $q(x^{(0)})$ into a well-behaved distribution $\pi(y)$ by repeatedly applying a Markov diffusion kernel $T_\pi (y|y'; \beta)$ for $\pi(y)$ where $\beta$ is the diffusion rate. So, because we are in a Markov process, $x^{(t)}$ depends only on the previous time-step $x^{(t-1)}$. 
 
 The forward trajectory, corresponding to starting at the data distribution and performing T steps of diffusion, is thus:
 
 $$ q(x^{(0...T)}) = q(x^{(0)}) 	\prod\limits_{t=1}^T q(x^{(t)} | x^{(t-1)}) $$  
 
-We need to be careful when choosing the value of the diffusion rate $\beta $, we can predefine it by giving it some value, or we can learn it with gradient descent. It is important to choose an adequate $\beta $ because it will influence the distribution we find at the end, and we want this distribution to be well-behaved. Let us remark that in general, all papers on diffusion models use the Gaussian distribution as the well-behaved distribution $\pi(y)$.
+We need to be careful when choosing the value of the diffusion rate $\beta$, we can predefine it by giving it some value, or we can learn it with gradient descent. It is important to choose an adequate $\beta $ because it will influence the distribution we find at the end, and we want this distribution to be well-behaved. Let us remark that in general, all papers on diffusion models use the Gaussian distribution as the well-behaved distribution $\pi(y)$.
 
 ### Backward Diffusion Process
 
